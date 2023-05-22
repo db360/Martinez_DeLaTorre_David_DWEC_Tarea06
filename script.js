@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var localidad = $("#localidad").val();
       var latResponse;
       var lonResponse;
+      var sunrise;
+      var sunset;
 
       try {
         $("#resultado").empty();
@@ -46,7 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
             units: "metric",
             lang: "ES",
           },
-          success: function (response) {},
+          success: function (response) {
+            console.log(response)
+            sunrise = new Date(response.sys.sunrise);
+            sunset = new Date(response.sys.sunset);
+            console.log(sunrise);
+            console.log(sunset);
+
+          },
           // Si hay un error en la petición
           error: function (xhr, estado, error_prevision) {
             console.log("Error producido: " + error_prevision + xhr);
@@ -92,10 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Crear el título
             const tituloDiv = document.createElement("div");
             tituloDiv.classList.add("titulo");
-            tituloDiv.innerHTML =
-              "<h2>Predicción para 5 días en " + localidadResponse + "</h2>";
+            var contenido = `
+                            <h2 class="titulo">Predicción para 5 días en <span>" ${localidadResponse} "</span></h2>
+                            <h3 class="sol">El sol sale hoy a las ${sunrise} y se pondrá a las ${sunset}</h3>
+            `;
 
-            resultadoDiv.appendChild(tituloDiv);
+            resultadoDiv.innerHTML= contenido;
 
             const cardsContainer = document.createElement("div");
             cardsContainer.classList.add("cardsContainer");
@@ -112,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
               var temperatura = dia.main.temp;
               var viento = dia.wind.speed;
-              var estadoTiempo = dia.weather[0].main;
               var descTiempo = dia.weather[0].description;
               var icono = dia.weather[0].icon;
               var lluvia;
@@ -128,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
               var contenido = `
                           <div class="cardTitle">${diaSemana} ${hora}</div>
                           <img src="http://openweathermap.org/img/wn/${icono}.png" alt="Icono del tiempo">
-                          <div class="cardWeather">${estadoTiempo}</div>
                           <div class="lluvia">${lluvia}</div>
                           <div class="cardWeather">${descTiempo}</div>
                           <div class="cardTemp">${temperatura}°C</div>
