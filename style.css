@@ -1,0 +1,51 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+.title {
+    text-align: center;
+    margin-top: 2rem;
+}
+.formulario {
+    margin: 4rem auto;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+.formulario input {
+    padding: 0.5rem 1rem ;
+    margin-bottom: 1rem;
+}
+
+.formulario button {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem auto;
+    width: 50%;
+}
+
+.formulario button:hover {
+    opacity: 70%;
+    transition: all 0.4s ease-in-out;
+}
+
+.btnTiempo {
+    background-color: rgb(124, 222, 255);
+
+}
+
+.btnContaminacion {
+    color: white;
+    background-color: rgb(118, 65, 12);
+
+}
+
