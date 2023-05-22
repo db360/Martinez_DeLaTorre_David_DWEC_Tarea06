@@ -12,8 +12,8 @@ body {
     margin-top: 2rem;
 }
 .formulario {
-    margin: 4rem auto;
-    height: 500px;
+    margin: 0 auto;
+    height: 150px;
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -21,6 +21,7 @@ body {
 
 }
 .formulario input {
+    text-align: center;
     padding: 0.5rem 1rem ;
     margin-bottom: 1rem;
 }
@@ -47,5 +48,38 @@ body {
     color: white;
     background-color: rgb(118, 65, 12);
 
+}
+.titulo {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+.cardsContainer {
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem;
+    gap: 0.5rem;
+    width: 200px;
+    border: 1px solid black;
+
+}
+
+.cardTitle {
+    font-size: large;
+    font-weight: bold;
+}
+
+.card > img {
+    width: 100px;
 }
 
